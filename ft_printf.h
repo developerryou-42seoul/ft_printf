@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:32:56 by sryou             #+#    #+#             */
-/*   Updated: 2022/05/20 16:50:55 by sryou            ###   ########.fr       */
+/*   Updated: 2022/05/20 17:03:46 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ typedef struct s_interpret{
 }	t_interpret;
 
 void	init_interpret(t_interpret *interpret);
-int	interpret_flag(char *format, t_interpret *interpret);
-int	interpret_width(char *format, t_interpret *interpret);
-int	interpret_precision(char *format, t_interpret *interpret);
-int	interpret_type(char *format, t_interpret *interpret);
+int		interpret_flag(char *format, t_interpret *interpret);
+int		interpret_width(char *format, t_interpret *interpret);
+int		interpret_precision(char *format, t_interpret *interpret);
+int		interpret_type(char *format, t_interpret *interpret);
 
 #endif

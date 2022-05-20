@@ -6,23 +6,23 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:32:33 by sryou             #+#    #+#             */
-/*   Updated: 2022/05/20 16:58:01 by sryou            ###   ########.fr       */
+/*   Updated: 2022/05/20 17:04:51 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	make_str_beforetype(char **str, t_interpret interpret)
+void	make_str_beforetype(char **str, t_interpret *interpret)
 {
 
 }
 
-void	make_str_aftertype(char **str, t_interpret interpret, va_list ap)
+void	make_str_aftertype(char **str, t_interpret *interpret, va_list ap)
 {
 	
 }
 
-char	*make_str(t_interpret interpret, va_list ap)
+char	*make_str(t_interpret *interpret, va_list ap)
 {
 	char	*str;
 
@@ -30,8 +30,8 @@ char	*make_str(t_interpret interpret, va_list ap)
 	if (str == 0)
 		return (0);
 	str[0] = 0;
-	make_str_beforetype();
-	make_str_aftertype();
+	make_str_beforetype(&str, interpret);
+	make_str_aftertype(&str, interpret, ap);
 	return (str);
 }
 
