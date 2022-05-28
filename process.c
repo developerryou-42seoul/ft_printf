@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 13:04:09 by sryou             #+#    #+#             */
-/*   Updated: 2022/05/28 13:12:42 by sryou            ###   ########.fr       */
+/*   Updated: 2022/05/28 13:13:15 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ char	*process_str(t_interpret *interpret, va_list ap)
 	str = (char *)malloc(sizeof(char) * 1);
 	make_str_type(&str, interpret, ap);
 	if (str == 0)
-		return (0)
+		return (0);
 	make_str_flags(&str, interpret);;
 	make_str_width(&str, interpret);
 	return (str);
