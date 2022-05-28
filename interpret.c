@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:47:39 by sryou             #+#    #+#             */
-/*   Updated: 2022/05/20 17:03:37 by sryou            ###   ########.fr       */
+/*   Updated: 2022/05/28 11:31:58 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	init_interpret(t_interpret *interpret)
 	interpret->is_base = 0;
 	interpret->is_blank = 0;
 	interpret->is_sign = 0;
+	interpret->is_plus = 0;
 	interpret->type = 0;
 	interpret->precision_width = 0;
 	interpret->width = 0;

@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:32:56 by sryou             #+#    #+#             */
-/*   Updated: 2022/05/20 17:03:46 by sryou            ###   ########.fr       */
+/*   Updated: 2022/05/28 11:32:04 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_interpret{
 	int		is_base;
 	int		is_blank;
 	int		is_sign;
+	int		is_plus;
 	char	type;
 	int		precision_width;
 	int		width;

@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:32:33 by sryou             #+#    #+#             */
-/*   Updated: 2022/05/20 17:04:51 by sryou            ###   ########.fr       */
+/*   Updated: 2022/05/28 11:34:10 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,27 @@
 
 void	make_str_beforetype(char **str, t_interpret *interpret)
 {
-
+	
 }
 
-void	make_str_aftertype(char **str, t_interpret *interpret, va_list ap)
+void	make_str_type(char **str, t_interpret *interpret, va_list ap)
 {
-	
+	if (interpret->type == 'c')
+		make_char(str, ap);
+	else if (interpret->type == 's')
+		make_str(str, ap);
+	else if (interpret->type == 'p')
+		make_address(str, ap);
+	else if (interpret->type == 'd' || interpret->type == 'i')
+		make_int(str, interpret, ap);
+	else if (interpret->type == 'u')
+		make_uint(str, ap);
+	else if (interpret->type == 'x')
+		make_lowhex(str, ap);
+	else if (interpret->type == 'X')
+		make_uphex(str, ap);
+	else if (interpret->type == '%')
+		make_percent(str);
 }
 
 char	*make_str(t_interpret *interpret, va_list ap)
@@ -27,11 +42,10 @@ char	*make_str(t_interpret *interpret, va_list ap)
 	char	*str;
 
 	str = (char *)malloc(sizeof(char) * 1);
+	make_str_type(&str, interpret, ap);
 	if (str == 0)
 		return (0);
-	str[0] = 0;
 	make_str_beforetype(&str, interpret);
-	make_str_aftertype(&str, interpret, ap);
 	return (str);
 }
 
