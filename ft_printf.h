@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:32:56 by sryou             #+#    #+#             */
-/*   Updated: 2022/05/28 13:07:29 by sryou            ###   ########.fr       */
+/*   Updated: 2022/05/28 13:20:49 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include "Libft/libft.h"
+
+int	ft_printf(const char *format, ...);
 
 typedef struct s_interpret{
 	int		is_left;

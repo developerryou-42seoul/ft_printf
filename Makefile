@@ -6,7 +6,7 @@
 #    By: sryou <sryou@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 16:26:16 by sryou             #+#    #+#              #
-#    Updated: 2022/05/28 13:11:22 by sryou            ###   ########.fr        #
+#    Updated: 2022/05/28 13:23:25 by sryou            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,3 +53,6 @@ bonus : $(B_OBJS)
 	make all -C $(LIBFT)/
 	cp $(LIBFT)/$(LIBFT_LIB) $(NAME)
 	$(AR) $(NAME) $^
+test : bonus
+	$(CC) $(CFLAGS) main.c -L ./ -l ftprintf -o test
+	./test

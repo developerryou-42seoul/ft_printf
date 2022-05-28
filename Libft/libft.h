@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 11:51:54 by sryou             #+#    #+#             */
-/*   Updated: 2022/03/19 18:04:09 by sryou            ###   ########.fr       */
+/*   Updated: 2022/05/28 13:15:06 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ int		ft_isascii(int c);
 size_t	ft_strlen(const char *s);
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
-size_t	ft_strlcpy(char *restrict dst, \
-			const char *restrict src, size_t dstsize);
-size_t	ft_strlcat(char *restrict dst, \
-			const char *restrict src, size_t dstsize);
+size_t	ft_strlcpy(char *dst, \
+			const char *src, size_t dstsize);
+size_t	ft_strlcat(char *dst, \
+			const char *src, size_t dstsize);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_strchr(const char *s, int c);
