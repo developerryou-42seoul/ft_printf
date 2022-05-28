@@ -6,48 +6,11 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:32:33 by sryou             #+#    #+#             */
-/*   Updated: 2022/05/28 11:34:10 by sryou            ###   ########.fr       */
+/*   Updated: 2022/05/28 13:07:16 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	make_str_beforetype(char **str, t_interpret *interpret)
-{
-	
-}
-
-void	make_str_type(char **str, t_interpret *interpret, va_list ap)
-{
-	if (interpret->type == 'c')
-		make_char(str, ap);
-	else if (interpret->type == 's')
-		make_str(str, ap);
-	else if (interpret->type == 'p')
-		make_address(str, ap);
-	else if (interpret->type == 'd' || interpret->type == 'i')
-		make_int(str, interpret, ap);
-	else if (interpret->type == 'u')
-		make_uint(str, ap);
-	else if (interpret->type == 'x')
-		make_lowhex(str, ap);
-	else if (interpret->type == 'X')
-		make_uphex(str, ap);
-	else if (interpret->type == '%')
-		make_percent(str);
-}
-
-char	*make_str(t_interpret *interpret, va_list ap)
-{
-	char	*str;
-
-	str = (char *)malloc(sizeof(char) * 1);
-	make_str_type(&str, interpret, ap);
-	if (str == 0)
-		return (0);
-	make_str_beforetype(&str, interpret);
-	return (str);
-}
 
 int	convent(char **format, va_list ap)
 {
@@ -60,7 +23,7 @@ int	convent(char **format, va_list ap)
 	*format += interpret_width(*format, &interpret);
 	*format += interpret_precision(*format, &interpret);
 	*format += interpret_type(*format, &interpret);
-	str = make_str(&interpret, ap);
+	str = process_str(&interpret, ap);
 	if (str == 0)
 		return (0);
 	ft_putstr_fd(str, 1);
@@ -93,8 +56,8 @@ int	ft_printf(const char *format, ...)
 	va_list	ap;
 	int		res;
 
-	va_start(ap, 0);
-	res = parse(format, ap);
+	va_start(ap, format);
+	res = parse((char *)format, ap);
 	va_end(ap);
 	return (res);
 }

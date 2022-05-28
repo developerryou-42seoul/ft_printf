@@ -6,26 +6,34 @@
 #    By: sryou <sryou@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 16:26:16 by sryou             #+#    #+#              #
-#    Updated: 2022/05/20 16:32:15 by sryou            ###   ########.fr        #
+#    Updated: 2022/05/28 13:11:22 by sryou            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprint.a
+NAME = libftprintf.a
+LIBFT		= Libft
+LIBFT_LIB	= libft.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -rf
 
-SRCS = ft_printf.c \ 
-		?
+SRCS = ft_printf.c \
+		interpret.c \
+		make1.c \
+		make2.c \
+		utils.c \
+		process.c
 
-BONUS = 
+BONUS = ft_printf_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 
-B_OBJS = $(BONUS:.c=.o)
+B_OBJS = $(SRCS:.c=.o)
 
-$(NAME) : $(OBJECTS)
+$(NAME) : $(OBJS)
+	make all -C $(LIBFT)/
+	cp $(LIBFT)/$(LIBFT_LIB) $(NAME)
 	$(AR) $(NAME) $^
 
 %.o : %.c
@@ -35,10 +43,13 @@ $(NAME) : $(OBJECTS)
 
 all : $(NAME)
 clean :
-	$(RM) $(OBJECTS)
-	$(RM) $(B_OBJECTS)
+	make fclean -C $(LIBFT)/
+	$(RM) $(OBJS)
+	$(RM) $(B_OBJS)
 fclean : clean
 	$(RM) $(NAME)
 re : fclean all
-bonus : $(B_OBJECTS)
+bonus : $(B_OBJS)
+	make all -C $(LIBFT)/
+	cp $(LIBFT)/$(LIBFT_LIB) $(NAME)
 	$(AR) $(NAME) $^

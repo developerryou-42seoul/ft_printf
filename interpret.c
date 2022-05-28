@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:47:39 by sryou             #+#    #+#             */
-/*   Updated: 2022/05/28 11:31:58 by sryou            ###   ########.fr       */
+/*   Updated: 2022/05/28 13:07:54 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	interpret_flag(char *format, t_interpret *interpret)
 	int	len;
 
 	len = 0;
-	while(1)
+	while (1)
 	{
 		if (format[len] == '-')
 			interpret->is_left = 1;
@@ -44,7 +44,7 @@ int	interpret_flag(char *format, t_interpret *interpret)
 		else if (format[len] == '+')
 			interpret->is_sign = 1;
 		else
-			break;
+			break ;
 		len++;
 	}
 	return (len);
