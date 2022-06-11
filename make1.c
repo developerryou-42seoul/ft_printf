@@ -6,55 +6,64 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 10:53:17 by sryou             #+#    #+#             */
-/*   Updated: 2022/05/28 13:10:00 by sryou            ###   ########.fr       */
+/*   Updated: 2022/06/11 22:58:02 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	make_char(char **str, va_list ap)
+char	*make_char(t_interpret *interpret, va_list ap)
 {
+	char	*str;
 	char	arg;
 
 	arg = va_arg(ap, int);
-	*str = (char *)malloc(sizeof(char) * 2);
-	if (*str == 0)
-		return ;
-	*str[0] = arg;
-	*str[1] = 0;
+	if (arg == 0)
+		interpret->nullchar = 1;
+	str = (char *)malloc(sizeof(char) * 2);
+	if (str == 0)
+		return (0);
+	str[0] = arg;
+	str[1] = 0;
+	return (str);
 }
 
-void	make_str(char **str, va_list ap)
+char	*make_str(va_list ap)
 {
 	char	*arg;
 
 	arg = va_arg(ap, char *);
-	*str = ft_strdup(arg);
+	if (arg == 0)
+		return (ft_strdup("(null)"));
+	return (ft_strdup(arg));
 }
 
-void	make_int(char **str, t_interpret *interpret, va_list ap)
+char	*make_int(t_interpret *interpret, va_list ap)
 {
 	int	arg;
 
 	arg = va_arg(ap, int);
 	if (arg > 0)
 		interpret->is_plus = 1;
-	*str = ft_itoa(arg);
+	return (ft_itoa(arg));
 }
 
-void	make_uint(char **str, va_list ap)
+char	*make_uint(va_list ap)
 {
 	unsigned int	arg;
 
 	arg = va_arg(ap, unsigned int);
-	*str = ft_itoa(arg);
+	return (ft_utoa(arg));
 }
 
-void	make_percent(char **str)
+char	*make_percent(void)
 {
-	*str = (char *)malloc(sizeof(char) * 2);
-	if (*str == 0)
-		return ;
-	*str[0] = '%';
-	*str[1] = 0;
+	char	*str;
+
+	str = (char *)malloc(sizeof(char) * 2);
+	if (str == 0)
+		return (0);
+	str[0] = '%';
+	str[1] = 0;
+	return (str);
 }

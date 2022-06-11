@@ -6,7 +6,7 @@
 #    By: sryou <sryou@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 16:26:16 by sryou             #+#    #+#              #
-#    Updated: 2022/05/28 13:23:25 by sryou            ###   ########.fr        #
+#    Updated: 2022/06/11 22:32:47 by sryou            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCS = ft_printf.c \
 		interpret.c \
 		make1.c \
 		make2.c \
-		utils.c \
+		utils1.c \
+		utils2.c \
 		process.c
 
 BONUS = ft_printf_bonus.c

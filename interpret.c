@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:47:39 by sryou             #+#    #+#             */
-/*   Updated: 2022/05/28 13:07:54 by sryou            ###   ########.fr       */
+/*   Updated: 2022/06/11 22:51:18 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	init_interpret(t_interpret *interpret)
 	interpret->type = 0;
 	interpret->precision_width = 0;
 	interpret->width = 0;
+	interpret->nullchar = 0;
 }
 
 int	interpret_flag(char *format, t_interpret *interpret)

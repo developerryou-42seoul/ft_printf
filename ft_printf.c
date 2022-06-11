@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:32:33 by sryou             #+#    #+#             */
-/*   Updated: 2022/05/28 13:26:41 by sryou            ###   ########.fr       */
+/*   Updated: 2022/06/11 22:54:42 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ int	convent(char **format, va_list ap)
 		return (0);
 	ft_putstr_fd(str, 1);
 	res = ft_strlen(str);
+	if (interpret.nullchar)
+	{
+		ft_putchar_fd(0, 1);
+		res += 1;
+	}
 	free(str);
 	return (res);
 }
