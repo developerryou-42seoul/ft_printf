@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 10:53:17 by sryou             #+#    #+#             */
-/*   Updated: 2022/06/11 22:58:02 by sryou            ###   ########.fr       */
+/*   Updated: 2022/06/12 10:02:10 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,15 @@ char	*make_int(t_interpret *interpret, va_list ap)
 	int	arg;
 
 	arg = va_arg(ap, int);
-	if (arg > 0)
+	if (arg >= 0)
 		interpret->is_plus = 1;
-	return (ft_itoa(arg));
+	else
+	{
+		interpret->is_sign = 1;
+		interpret->is_plus = -1;
+		return (ft_utoa(-arg));
+	}
+	return (ft_utoa(arg));
 }
 
 char	*make_uint(va_list ap)

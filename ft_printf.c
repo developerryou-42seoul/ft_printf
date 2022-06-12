@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:32:33 by sryou             #+#    #+#             */
-/*   Updated: 2022/06/11 22:54:42 by sryou            ###   ########.fr       */
+/*   Updated: 2022/06/11 23:45:47 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	convent(char **format, va_list ap)
 	int			res;
 	char		*str;
 
+	res = 0;
 	*format += 1;
 	init_interpret(&interpret);
 	*format += interpret_flag(*format, &interpret);
@@ -27,13 +28,13 @@ int	convent(char **format, va_list ap)
 	str = process_str(&interpret, ap);
 	if (str == 0)
 		return (0);
-	ft_putstr_fd(str, 1);
-	res = ft_strlen(str);
 	if (interpret.nullchar)
 	{
 		ft_putchar_fd(0, 1);
 		res += 1;
 	}
+	ft_putstr_fd(str, 1);
+	res += ft_strlen(str);
 	free(str);
 	return (res);
 }

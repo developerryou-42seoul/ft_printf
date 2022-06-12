@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:32:56 by sryou             #+#    #+#             */
-/*   Updated: 2022/06/11 22:51:49 by sryou            ###   ########.fr       */
+/*   Updated: 2022/06/12 10:20:15 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,12 @@ char	*make_uphex(va_list ap);
 int		ft_intlen(char *str);
 char	*ft_itohex(unsigned long long n, int is_upper);
 char	*ft_utoa(unsigned int n);
-void	ft_fillch(char *padding, int len, char ch);
+void	ft_fillch(char *padding, int len, int is_zero);
 
 char	*process_str(t_interpret *interpret, va_list ap);
+void	make_str_precision(char **str, t_interpret *interpret);
+void	make_str_sign(char **str, t_interpret *interpret);
+void	make_str_base(char **str, t_interpret *interpret);
+void	make_str_width(char **str, t_interpret *interpret);
 
 #endif

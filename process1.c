@@ -1,41 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process.c                                          :+:      :+:    :+:   */
+/*   process1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 13:04:09 by sryou             #+#    #+#             */
-/*   Updated: 2022/06/11 22:50:56 by sryou            ###   ########.fr       */
+/*   Updated: 2022/06/12 10:27:04 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	make_str_flags(char **str, t_interpret *interpret)
-{
-	char	*temp;
-
-	if (interpret->is_sign && interpret->is_plus)
-	{
-		temp = ft_strjoin("+", *str);
-		if (temp == 0)
-			return ;
-		free(*str);
-		*str = temp;
-	}
-	if (interpret->is_base)
-	{
-		if (interpret->type == 'x')
-			temp = ft_strjoin("0x", *str);
-		else if (interpret->type == 'X')
-			temp = ft_strjoin("0X", *str);
-		if (temp == 0)
-			return ;
-		free(*str);
-		*str = temp;
-	}
-}
 
 void	make_str_width(char **str, t_interpret *interpret)
 {
@@ -43,16 +18,15 @@ void	make_str_width(char **str, t_interpret *interpret)
 	char	*temp;
 	char	*padding;
 
-	len = ft_strlen(*str);
+	len = ft_strlen(*str) + interpret->nullchar;
+	if (interpret->width == 0 && interpret->is_blank)
+		interpret->width = len + 1;
 	if (interpret->width > len)
 	{
 		padding = (char *)malloc(sizeof(char) * (interpret->width - len + 1));
 		if (padding == 0)
 			return ;
-		if (interpret->is_zero)
-			ft_fillch(padding, interpret->width - len, '0');
-		else
-			ft_fillch(padding, interpret->width - len, ' ');
+		ft_fillch(padding, interpret->width - len, interpret->is_zero);
 		if (interpret->is_left)
 			temp = ft_strjoin(*str, padding);
 		else
@@ -92,9 +66,15 @@ char	*process_str(t_interpret *interpret, va_list ap)
 	make_str_type(&str, interpret, ap);
 	if (str == 0)
 		return (0);
-	make_str_flags(&str, interpret);
+	make_str_precision(&str, interpret);
 	if (str == 0)
 		return (0);
 	make_str_width(&str, interpret);
+	if (str == 0)
+		return (0);
+	make_str_sign(&str, interpret);
+	if (str == 0)
+		return (0);
+	make_str_base(&str, interpret);
 	return (str);
 }

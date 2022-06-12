@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 11:22:12 by sryou             #+#    #+#             */
-/*   Updated: 2022/06/11 22:32:50 by sryou            ###   ########.fr       */
+/*   Updated: 2022/06/12 10:19:57 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,15 @@ char	*ft_itohex(unsigned long long n, int is_upper)
 	return (mkstr);
 }
 
-void	ft_fillch(char *padding, int len, char ch)
+void	ft_fillch(char *padding, int len, int is_zero)
 {
-	int	idx;
+	int		idx;
+	char	ch;
 
+	if (is_zero)
+		ch = '0';
+	else
+		ch = ' ';
 	idx = 0;
 	while (idx < len)
 	{

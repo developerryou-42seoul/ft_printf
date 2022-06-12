@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 11:22:10 by sryou             #+#    #+#             */
-/*   Updated: 2022/06/11 22:28:31 by sryou            ###   ########.fr       */
+/*   Updated: 2022/06/12 09:57:03 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ char	*make_address(t_interpret *interpret, va_list ap)
 
 	arg = va_arg(ap, unsigned long long);
 	interpret->is_base = 1;
-	interpret->type = 'x';
 	return (ft_itohex(arg, 0));
 }
 
